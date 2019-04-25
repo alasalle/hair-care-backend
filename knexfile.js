@@ -2,8 +2,10 @@
 
 module.exports = {
   development: {
-    client: 'pg',
-    connection: 'postgres://localhost',
+    client: 'sqlite3',
+    connection: {
+      filename: './data/haircare.sqlite3'
+    },
     useNullAsDefault: true,
     migrations: {
       directory: './data/migrations'
