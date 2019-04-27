@@ -2,6 +2,7 @@ const db = require('../../dbConfig')
 
 module.exports = {
   getStylists,
+  findById,
   findStylist,
   addStylist
 }
@@ -28,6 +29,11 @@ function getStylists() {
       }
     }
   )
+}
+function findById(id) {
+  return db('stylists')
+    .where({ id })
+    .first()
 }
 function findStylist(id) {
   return db('stylists')

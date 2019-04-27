@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const passport = require('passport')
+const jwt = require('jsonwebtoken')
 
 router.get('/login', (req, res) => {
   res.send('<h3>Logging In</h3>')
@@ -16,7 +17,17 @@ router.get(
 
 // callback route for google to redirect to
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-  res.send('you reached the callback URI')
+  // req.session.user = req.user
+  const token = generateToken(req.user)
+  res.send(token)
 })
+
+function generateToken(stylist) {
+  const payload = stylist
+  const options = {
+    expiresIn: '1d'
+  }
+  return jwt.sign(payload, process.env.JWT_SECRET, options)
+}
 
 module.exports = router

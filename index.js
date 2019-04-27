@@ -2,6 +2,9 @@ const express = require('express')
 const server = express()
 const helmet = require('helmet')
 const cors = require('cors')
+const session = require('express-session')
+const KnexSessionStore = require('connect-session-knex')(session)
+const passport = require('passport')
 require('./config/passport-setup')
 require('dotenv').config()
 
@@ -14,6 +17,28 @@ const corsOptions = {
   origin: 'http://localhost:3000'
 }
 
+const sessionOptions = {
+  name: 'hair-care',
+  secret: process.env.COOKIE_KEY,
+  cookie: {
+    maxAge: 1000 * 60 * 60, // hour
+    secure: false
+  },
+  httpOnly: true,
+  resave: false,
+  saveUninitialized: false,
+  store: new KnexSessionStore({
+    knex: require('./dbConfig'),
+    tablename: 'sessions',
+    sidfieldname: 'sid',
+    createtable: true,
+    clearInterval: 1000 * 60 * 60 //hour
+  })
+}
+
+server.use(session(sessionOptions))
+server.use(passport.initialize())
+server.use(passport.session())
 server.use(helmet())
 server.use(cors(corsOptions))
 server.use(express.json())

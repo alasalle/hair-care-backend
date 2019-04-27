@@ -1,7 +1,17 @@
 const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20')
 const Stylists = require('../data/helpers/stylistsHelper')
+const jwt = require('jsonwebtoken')
+const { authenticate } = require('../auth/authenticate')
+
 require('dotenv').config()
+passport.serializeUser((user, done) => {
+  done(null, user.id)
+})
+passport.deserializeUser(async (id, done) => {
+  const user = await Stylists.findById(id)
+  done(null, user.id)
+})
 
 passport.use(
   new GoogleStrategy(
@@ -13,20 +23,24 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       const { id, displayName, name, photos } = profile
-      console.log('passport callback function fired')
       // check if user is already in database
-      const exists = await Stylists.findStylist(id)
+      let exists = await Stylists.findStylist(id)
       // add user
       if (!exists) {
-        const newUser = await Stylists.addStylist({
+        const result = await Stylists.addStylist({
           google_id: id,
           stylist_name: displayName,
           first_name: name.givenName,
           last_name: name.familyName,
           profile_picture: photos[0].value || ''
         })
-        console.log('new user created: ' + newUser)
-      } else console.log(`user is ${JSON.stringify(exists)}`)
+        exists = await Stylists.findStylist(id)
+        console.log('new user created: ' + JSON.stringify(exists))
+        done(null, exists)
+      } else {
+        console.log(`user is ${JSON.stringify(exists)}`)
+        done(null, exists)
+      }
     }
   )
 )
