@@ -26,7 +26,7 @@ passport.use(
           profile_picture: photos[0].value || ''
         })
         console.log('new user created: ' + newUser)
-      } else console.log(`user ${displayName}(${id}) already exists`)
+      } else console.log(`user is ${JSON.stringify(exists)}`)
     }
   )
 )
