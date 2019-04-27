@@ -2,9 +2,11 @@ const express = require('express')
 const server = express()
 const helmet = require('helmet')
 const cors = require('cors')
+require('./config/passport-setup')
+require('dotenv').config()
+
 const AuthRouter = require('./data/routes/auth-router')
 const StylistsRouter = require('./data/routes/stylists-router')
-require('dotenv').config()
 
 const PORT = process.env.PORT || 5000
 
