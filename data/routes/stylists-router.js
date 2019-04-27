@@ -1,6 +1,5 @@
-const express = require('express')
+const router = require('express').Router()
 const Stylists = require('../helpers/stylistsHelper')
-const router = express.Router()
 
 router.get('/', async (req, res) => {
   try {
