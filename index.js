@@ -10,6 +10,7 @@ require('dotenv').config()
 
 const AuthRouter = require('./data/routes/auth-router')
 const StylistsRouter = require('./data/routes/stylists-router')
+const PostsRouter = require('./data/routes/posts-router')
 
 const PORT = process.env.PORT || 5000
 
@@ -44,6 +45,7 @@ server.use(cors(corsOptions))
 server.use(express.json())
 server.use('/auth', AuthRouter)
 server.use('/api/stylists', StylistsRouter)
+server.use('/api/posts', PostsRouter)
 
 server.get('/', (req, res) => res.status(200).json({ api: 'up' }))
 
