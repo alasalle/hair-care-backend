@@ -18,8 +18,8 @@ passport.use(
     {
       // options for google strategy
       callbackURL: '/auth/google/redirect',
-      clientID: process.env.CLIENT_ID || '',
-      clientSecret: process.env.CLIENT_SECRET || ''
+      clientID: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET
     },
     async (accessToken, refreshToken, profile, done) => {
       const { id, displayName, name, photos } = profile
