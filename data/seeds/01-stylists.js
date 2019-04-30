@@ -1,6 +1,9 @@
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('stylists').truncate()
+  knex.raw('SET foreign_key_checks = 0')
+  knex('stylists').truncate()
+  knex.raw('SET foreign_key_checks = 1')
+  return knex('stylists')
   // .then(function() {
   //   // Inserts seed entries
   //   return knex('stylists').insert([
