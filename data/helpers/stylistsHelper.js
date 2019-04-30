@@ -35,7 +35,6 @@ function getStylists() {
 function getStylistById(id) {
   return db('stylists')
     .where({ id })
-    .first()
     .map(
       ({
         id,
@@ -57,6 +56,7 @@ function getStylistById(id) {
         }
       }
     )
+    .first()
 }
 function getStylistByGoogleId(id) {
   return db('stylists')
