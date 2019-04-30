@@ -1,6 +1,7 @@
 const express = require('express')
 const Posts = require('../helpers/postsHelper')
 const router = express.Router()
+const { authenticate } = require('../../auth/authenticate')
 
 router.get('/', async (req, res) => {
   try {
@@ -23,7 +24,7 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', authenticate, async (req, res) => {
   const { body } = req
   if (body && body.description && body.stylist_id)
     try {
