@@ -56,7 +56,6 @@ function getStylistById(id) {
         }
       }
     )
-    .first()
 }
 function getStylistByGoogleId(id) {
   return db('stylists')
