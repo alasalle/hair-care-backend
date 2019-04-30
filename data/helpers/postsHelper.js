@@ -16,8 +16,8 @@ function getPostById(id) {
     .where({ id })
     .first()
 }
-function addPost(data) {
-  return db('posts').insert(data, ['id'])
+function addPost(data, userId) {
+  return db('posts').insert({ ...data, stylist_id: userId }, ['id'])
 }
 async function editPost(id, description, userId) {
   const post = await getPostById(id)
