@@ -29,7 +29,8 @@ router.post('/', authenticate, async (req, res) => {
   if (body && body.description && body.stylist_id)
     try {
       const id = await Posts.addPost(body, req.decoded.id)
-      const post = await Posts.getPostById(...id)
+      const newId = parseInt(JSON.stringify(id).match(/[0-9]/g).join``)
+      const post = await Posts.getPostById(newId)
       res.status(201).json({ post })
     } catch (error) {
       res.status(500).json({ error })
