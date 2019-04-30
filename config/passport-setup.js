@@ -6,13 +6,20 @@ const { authenticate } = require('../auth/authenticate')
 
 require('dotenv').config()
 passport.serializeUser((user, done) => {
-  done(null, user.id)
+  try {
+    done(null, user.id)
+  } catch (error) {
+    console.log(error)
+  }
 })
 passport.deserializeUser(async (id, done) => {
-  const user = await Stylists.findById(id)
-  done(null, user.id)
+  try {
+    const user = await Stylists.findById(id)
+    done(null, user.id)
+  } catch (error) {
+    console.log(error)
+  }
 })
-
 passport.use(
   new GoogleStrategy(
     {
