@@ -15,7 +15,7 @@ router.get('/:id', async (req, res) => {
   try {
     const stylist = await Stylists.getStylistById(id)
     stylist
-      ? res.status(200).json(stylist[0])
+      ? res.status(200).json(stylist)
       : res.status(404).json({ error: 'Stylist not found' })
   } catch (error) {
     res.status(500).json({ error })

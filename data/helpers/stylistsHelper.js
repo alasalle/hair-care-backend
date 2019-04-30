@@ -32,30 +32,12 @@ function getStylists() {
     }
   )
 }
-function getStylistById(id) {
-  return db('stylists')
+async function getStylistById(id) {
+  const stylist = await db('stylists')
     .where({ id })
-    .map(
-      ({
-        id,
-        profile_picture,
-        stylist_name,
-        first_name,
-        last_name,
-        bio,
-        location
-      }) => {
-        return {
-          id,
-          profile_picture,
-          stylist_name,
-          first_name,
-          last_name,
-          bio,
-          location
-        }
-      }
-    )
+    .first()
+  delete stylist['google_id']
+  return stylist
 }
 function getStylistByGoogleId(id) {
   return db('stylists')
