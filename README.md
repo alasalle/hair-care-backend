@@ -2,25 +2,34 @@
 
 ## User
 
+- google_id:string
 - username:string
-- password:string
-- or Oauth
 
 ## Likes
 
-- userId:integer
-- postId:integer
+- user_id:integer
+- post_id:integer
+- liked:boolean
+
+## Rating
+
+- user_id:integer
+- stylist_id:integer
+- rating:integer
 
 ## Posts
 
 - image:string
 - description:string
-- userId:integer
+- user_id:integer
 
 ## Hairstylist
 
+- google_id:string
 - username:string
-- firstName:string
-- lastName:string
+- profile_picture:string
+- first_name:string
+- last_name:string
 - bio:text
 - location:string
+- phone_number:string
