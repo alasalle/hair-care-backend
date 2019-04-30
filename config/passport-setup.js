@@ -14,7 +14,7 @@ passport.serializeUser((user, done) => {
 })
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await Stylists.findById(id)
+    const user = await Stylists.getStylistById(id)
     done(null, user.id)
   } catch (error) {
     console.log(error)
@@ -31,7 +31,7 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
       const { id, displayName, name, photos } = profile
       // check if user is already in database
-      let exists = await Stylists.findStylist(id)
+      let exists = await Stylists.getStylistByGoogleId(id)
       // add user
       if (!exists) {
         const result = await Stylists.addStylist({
@@ -41,7 +41,7 @@ passport.use(
           last_name: name.familyName || '',
           profile_picture: photos[0].value || ''
         })
-        exists = await Stylists.findStylist(id)
+        exists = await Stylists.getStylistByGoogleId(id)
         console.log('new user created: ' + JSON.stringify(exists))
         done(null, exists)
       } else {
