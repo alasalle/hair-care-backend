@@ -36,6 +36,27 @@ function getStylistById(id) {
   return db('stylists')
     .where({ id })
     .first()
+    .map(
+      ({
+        id,
+        profile_picture,
+        stylist_name,
+        first_name,
+        last_name,
+        bio,
+        location
+      }) => {
+        return {
+          id,
+          profile_picture,
+          stylist_name,
+          first_name,
+          last_name,
+          bio,
+          location
+        }
+      }
+    )
 }
 function getStylistByGoogleId(id) {
   return db('stylists')
