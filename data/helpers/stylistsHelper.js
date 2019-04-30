@@ -36,8 +36,9 @@ async function getStylistById(id) {
   const stylist = await db('stylists')
     .where({ id })
     .first()
-  delete stylist['google_id']
-  return stylist
+  let newStylist = {}
+  for (let i in stylist) if (i !== 'google_id') newStylist[i] = stylist[i]
+  return newStylist
 }
 function getStylistByGoogleId(id) {
   return db('stylists')
