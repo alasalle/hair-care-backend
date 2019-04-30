@@ -29,7 +29,7 @@ router.post('/', authenticate, async (req, res) => {
   if (body && body.description && body.stylist_id)
     try {
       const id = await Posts.addPost(body, req.decoded.id)
-      const post = await Posts.getPostById(id[0])
+      const post = await Posts.getPostById(...id)
       res.status(201).json({ post })
     } catch (error) {
       res.status(500).json({ error })
