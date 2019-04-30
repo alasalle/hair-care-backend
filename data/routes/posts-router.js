@@ -39,4 +39,22 @@ router.post('/', authenticate, async (req, res) => {
       .json({ error: 'Please provide a post description and stylist id' })
 })
 
+router.delete('/:id', authenticate, async (req, res) => {
+  const userId = req.decoded.id
+  const { id } = req.params
+  try {
+    const exists = await Posts.getPostById(id)
+    if (exists) {
+      const success = await Posts.deletePostById(id, userId)
+      success
+        ? res.status(200).json(success)
+        : res.status(500).json({
+            error: 'You cannot delete a post made by another stylist!'
+          })
+    } else res.status(404).json({ error: 'Post not found!' })
+  } catch (error) {
+    res.status(500).json({ error })
+  }
+})
+
 module.exports = router

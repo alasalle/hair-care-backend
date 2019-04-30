@@ -30,8 +30,8 @@ passport.use(
         const result = await Stylists.addStylist({
           google_id: id,
           stylist_name: displayName,
-          first_name: name.givenName,
-          last_name: name.familyName,
+          first_name: name.givenName || '',
+          last_name: name.familyName || '',
           profile_picture: photos[0].value || ''
         })
         exists = await Stylists.findStylist(id)
