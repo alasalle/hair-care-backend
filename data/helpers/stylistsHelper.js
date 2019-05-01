@@ -10,35 +10,32 @@ module.exports = {
 }
 
 function getStylists() {
-  return db('stylists').map(
-    ({
-      id,
-      profile_picture,
-      stylist_name,
-      first_name,
-      last_name,
-      bio,
-      location
-    }) => {
-      return {
-        id,
-        profile_picture,
-        stylist_name,
-        first_name,
-        last_name,
-        bio,
-        location
-      }
-    }
-  )
+  return db
+    .select(
+      'id',
+      'profile_picture',
+      'stylist_name',
+      'first_name',
+      'last_name',
+      'bio',
+      'location'
+    )
+    .from('stylists')
 }
-async function getStylistById(id) {
-  const stylist = await db('stylists')
+function getStylistById(id) {
+  return db
+    .select(
+      'id',
+      'profile_picture',
+      'stylist_name',
+      'first_name',
+      'last_name',
+      'bio',
+      'location'
+    )
+    .from('stylists')
     .where({ id })
     .first()
-  let newStylist = {}
-  for (let i in stylist) if (i !== 'google_id') newStylist[i] = stylist[i]
-  return newStylist
 }
 function getStylistByGoogleId(id) {
   return db('stylists')
