@@ -26,7 +26,7 @@ function authenticate(req, res, next) {
 
 function checkStylist(req, res, next) {
   const { decoded } = req
-  if (decoded.stylist === 1) {
+  if (decoded.stylist == true) {
     next()
   } else {
     return res.status(401).json({
@@ -38,7 +38,7 @@ function checkStylist(req, res, next) {
 function checkUser(req, res, next) {
   const { decoded } = req
 
-  if (decoded.stylist === 0) {
+  if (decoded.stylist == false) {
     next()
   } else {
     return res.status(401).json({
