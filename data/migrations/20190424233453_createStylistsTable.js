@@ -15,6 +15,10 @@ exports.up = function(knex, Promise) {
     tbl.string('bio', 256)
     tbl.string('location', 128)
     tbl.string('phone_number', 32)
+    tbl
+      .boolean('stylist')
+      .notNullable()
+      .defaultTo(false)
   })
 }
 

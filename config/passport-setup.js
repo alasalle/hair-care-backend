@@ -1,8 +1,6 @@
 const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20')
 const Stylists = require('../data/helpers/stylistsHelper')
-const jwt = require('jsonwebtoken')
-const { authenticate } = require('../auth/authenticate')
 
 require('dotenv').config()
 passport.serializeUser((user, done) => {

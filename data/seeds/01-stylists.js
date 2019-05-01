@@ -15,7 +15,8 @@ exports.seed = function(knex, Promise) {
         first_name: 'Joshua',
         last_name: 'Gonzalez',
         bio: 'shrimp',
-        location: 'San Antonio, TX'
+        location: 'San Antonio, TX',
+        stylist: true
       },
       {
         id: 2,
@@ -26,7 +27,8 @@ exports.seed = function(knex, Promise) {
         first_name: 'shrimp',
         last_name: '',
         bio: 'cats',
-        location: 'San Antonio, TX'
+        location: 'San Antonio, TX',
+        stylist: false
       }
     ])
   })
