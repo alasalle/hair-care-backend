@@ -31,7 +31,8 @@ router.put('/:id', authenticate, async (req, res) => {
       body.stylist_name ||
       body.first_name ||
       body.last_name ||
-      body.location)
+      body.location ||
+      body.phone_number)
   )
     try {
       const exists = await Stylists.getStylistById(id)

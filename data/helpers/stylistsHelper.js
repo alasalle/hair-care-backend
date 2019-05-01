@@ -18,7 +18,8 @@ function getStylists() {
       'first_name',
       'last_name',
       'bio',
-      'location'
+      'location',
+      'phone_number'
     )
     .from('stylists')
 }
@@ -31,7 +32,8 @@ function getStylistById(id) {
       'first_name',
       'last_name',
       'bio',
-      'location'
+      'location',
+      'phone_number'
     )
     .from('stylists')
     .where({ id })
