@@ -1,15 +1,9 @@
 # hair-care-backend
 
-## User
-
-- google_id:string
-- username:string
-
 ## Likes
 
 - user_id:integer
 - post_id:integer
-- liked:boolean
 
 ## Rating
 
@@ -36,7 +30,7 @@
 - post_id:integer
 - tag_id:integer
 
-## Hairstylist
+## User
 
 - google_id:string
 - username:string
@@ -46,3 +40,4 @@
 - bio:text
 - location:string
 - phone_number:string
+- stylist:boolean
