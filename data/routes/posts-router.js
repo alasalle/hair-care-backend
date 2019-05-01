@@ -24,6 +24,18 @@ router.get('/:id', async (req, res) => {
   }
 })
 
+router.post('/tags', async (req, res) => {
+  const { tag } = req.body
+  try {
+    const posts = await Posts.getPostsByTag(tag)
+    posts
+      ? res.status(200).json(posts)
+      : res.status(404).json({ error: 'Posts not found' })
+  } catch (error) {
+    res.status(500).json({ error })
+  }
+})
+
 router.post('/', authenticate, async (req, res) => {
   const { body } = req
   if (body && body.description && body.stylist_id)

@@ -14,6 +14,7 @@ exports.up = function(knex, Promise) {
     tbl.string('last_name', 128).notNullable()
     tbl.string('bio', 256)
     tbl.string('location', 128)
+    tbl.string('phone_number', 32)
   })
 }
 

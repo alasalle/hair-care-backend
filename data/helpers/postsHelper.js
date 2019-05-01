@@ -3,6 +3,7 @@ const db = require('../../dbConfig')
 module.exports = {
   getPosts,
   getPostById,
+  getPostsByTag,
   addPost,
   editPost,
   deletePostById
@@ -15,6 +16,25 @@ function getPostById(id) {
   return db('posts')
     .where({ id })
     .first()
+}
+function getPostsByTag(tag) {
+  return db
+    .select(
+      'posts.id as post_id',
+      'description',
+      'image',
+      'stylist_id',
+      'posts.description',
+      'tag'
+    )
+    .from('tags_posts')
+    .innerJoin('tags', function() {
+      this.on('tag_id', '=', 'tags.id')
+    })
+    .innerJoin('posts', function() {
+      this.on('post_id', '=', 'posts.id')
+    })
+    .where({ 'tags.tag': tag })
 }
 function addPost(data, userId) {
   return db('posts').insert({ ...data, stylist_id: userId }, ['id'])
