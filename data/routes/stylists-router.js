@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const jwt = require('jsonwebtoken')
 const Stylists = require('../helpers/stylistsHelper')
 const {
   authenticate,
@@ -28,20 +29,25 @@ router.get('/:id', async (req, res) => {
 router.get('/change/:id', authenticate, async (req, res) => {
   const { id } = req.params
   try {
-    const exists = await Stylists.getStylistById(id)
+    let exists = await Stylists.getStylistById(id)
     if (exists) {
       const edit = await Stylists.editStylist(
         id,
-        !exists.stylist,
+        { stylist: !exists.stylist },
         req.decoded.id
       )
-      edit
-        ? res.status(201).json(edit)
+      exists = await Stylists.getFullStylistById(id)
+      req.session.user = exists
+      const token = generateToken(exists)
+
+      edit && exists
+        ? res.status(201).json({ ...exists, token })
         : res.status(500).json({
             error: 'You cannot edit another stylist!'
           })
     } else res.status(404).json({ error: 'Stylist not found' })
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: JSON.stringify(error) })
   }
 })
@@ -96,5 +102,13 @@ router.delete('/:id', authenticate, checkStylist, async (req, res) => {
     res.status(500).json({ error: JSON.stringify(error) })
   }
 })
+
+function generateToken(stylist) {
+  const payload = stylist
+  const options = {
+    expiresIn: '1d'
+  }
+  return jwt.sign(payload, process.env.JWT_SECRET, options)
+}
 
 module.exports = router

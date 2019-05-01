@@ -26,7 +26,6 @@ function authenticate(req, res, next) {
 
 function checkStylist(req, res, next) {
   const { decoded } = req
-
   if (decoded.stylist === 1) {
     next()
   } else {
