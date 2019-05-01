@@ -1,7 +1,9 @@
 const jwt = require('jsonwebtoken')
 
 module.exports = {
-  authenticate
+  authenticate,
+  checkStylist,
+  checkUser
 }
 
 function authenticate(req, res, next) {
@@ -18,6 +20,30 @@ function authenticate(req, res, next) {
   } else {
     return res.status(401).json({
       error: 'No token provided, must be set on the Authorization Header'
+    })
+  }
+}
+
+function checkStylist(req, res, next) {
+  const { decoded } = req
+
+  if (decoded.stylist === 1) {
+    next()
+  } else {
+    return res.status(401).json({
+      error: 'You must be a stylist in order to perform this action'
+    })
+  }
+}
+
+function checkUser(req, res, next) {
+  const { decoded } = req
+
+  if (decoded.stylist === 0) {
+    next()
+  } else {
+    return res.status(401).json({
+      error: 'You must be a user in order to perform this action'
     })
   }
 }

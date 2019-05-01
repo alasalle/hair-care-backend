@@ -1,6 +1,10 @@
 const router = require('express').Router()
 const Stylists = require('../helpers/stylistsHelper')
-const { authenticate } = require('../../auth/authenticate')
+const {
+  authenticate,
+  checkStylist,
+  checkUser
+} = require('../../auth/authenticate')
 
 router.get('/', async (req, res) => {
   try {
@@ -21,7 +25,7 @@ router.get('/:id', async (req, res) => {
     res.status(500).json({ error })
   }
 })
-router.put('/:id', authenticate, async (req, res) => {
+router.put('/:id', authenticate, checkStylist, async (req, res) => {
   const { body } = req
   const { id } = req.params
   if (body.stylist) delete body.stylist
@@ -54,7 +58,7 @@ router.put('/:id', authenticate, async (req, res) => {
     }
   else res.status(500).json({ error: 'Please provide a change to make' })
 })
-router.delete('/:id', authenticate, async (req, res) => {
+router.delete('/:id', authenticate, checkStylist, async (req, res) => {
   const { body } = req
   const { id } = req.params
   try {
