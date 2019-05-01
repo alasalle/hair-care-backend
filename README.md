@@ -22,6 +22,7 @@
 - image:string
 - description:string
 - user_id:integer
+- tag:string
 
 ## Hairstylist
 
