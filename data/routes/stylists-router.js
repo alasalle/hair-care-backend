@@ -24,6 +24,7 @@ router.get('/:id', async (req, res) => {
 router.put('/:id', authenticate, async (req, res) => {
   const { body } = req
   const { id } = req.params
+  if (body.stylist) delete body.stylist
   if (
     body &&
     (body.bio ||
