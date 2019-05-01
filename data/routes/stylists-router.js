@@ -70,8 +70,12 @@ router.put('/:id', authenticate, checkStylist, async (req, res) => {
       const exists = await Stylists.getStylistById(id)
       if (exists) {
         const edit = await Stylists.editStylist(id, body, req.decoded.id)
-        edit
-          ? res.status(201).json(edit)
+        exists = await Stylists.getFullStylistById(id)
+        req.session.user = exists
+        const token = generateToken(exists)
+
+        edit && exists
+          ? res.status(201).json({ ...exists, token })
           : res.status(500).json({
               error: 'You cannot edit another stylist!'
             })
