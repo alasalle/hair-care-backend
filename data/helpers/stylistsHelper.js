@@ -49,10 +49,12 @@ function getStylistByGoogleId(id) {
 function addStylist(data) {
   return db('stylists').insert(data, ['id'])
 }
-function editStylist(id, data) {
-  return db('stylists')
-    .where({ id })
-    .update({ data }, ['id'])
+function editStylist(id, data, userId) {
+  if (userId === id)
+    return db('stylists')
+      .where({ id })
+      .update({ data }, ['id'])
+  else return null
 }
 function deleteStylist(id) {
   return db('stylists')

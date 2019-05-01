@@ -25,6 +25,27 @@ router.get('/:id', async (req, res) => {
     res.status(500).json({ error })
   }
 })
+router.get('/change/:id', authenticate, async (req, res) => {
+  const { id } = req.params
+  try {
+    const exists = await Stylists.getStylistById(id)
+    if (exists) {
+      const edit = await Stylists.editStylist(
+        id,
+        !exists.stylist,
+        req.decoded.id
+      )
+      edit
+        ? res.status(201).json(edit)
+        : res.status(500).json({
+            error: 'You cannot edit another stylist!'
+          })
+    } else res.status(404).json({ error: 'Stylist not found' })
+  } catch (error) {
+    res.status(500).json({ error: JSON.stringify(error) })
+  }
+})
+
 router.put('/:id', authenticate, checkStylist, async (req, res) => {
   const { body } = req
   const { id } = req.params
@@ -42,11 +63,7 @@ router.put('/:id', authenticate, checkStylist, async (req, res) => {
     try {
       const exists = await Stylists.getStylistById(id)
       if (exists) {
-        const edit = await Stylists.editStylist(
-          id,
-          body.description,
-          req.decoded.id
-        )
+        const edit = await Stylists.editStylist(id, body, req.decoded.id)
         edit
           ? res.status(201).json(edit)
           : res.status(500).json({
