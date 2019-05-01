@@ -1,7 +1,11 @@
 const express = require('express')
 const Posts = require('../helpers/postsHelper')
 const router = express.Router()
-const { authenticate } = require('../../auth/authenticate')
+const {
+  authenticate,
+  checkStylist,
+  checkUser
+} = require('../../auth/authenticate')
 
 router.get('/', async (req, res) => {
   try {
@@ -24,7 +28,7 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-router.post('/tags', async (req, res) => {
+router.post('/tags', authenticate, checkStylist, async (req, res) => {
   const { tag } = req.body
   try {
     const posts = await Posts.getPostsByTag(tag)
@@ -36,7 +40,7 @@ router.post('/tags', async (req, res) => {
   }
 })
 
-router.post('/', authenticate, async (req, res) => {
+router.post('/', authenticate, checkStylist, async (req, res) => {
   const { body } = req
   if (body && body.description && body.stylist_id)
     try {
@@ -53,7 +57,7 @@ router.post('/', authenticate, async (req, res) => {
       .json({ error: 'Please provide a post description and stylist id' })
 })
 
-router.put('/:id', authenticate, async (req, res) => {
+router.put('/:id', authenticate, checkStylist, async (req, res) => {
   const { body } = req
   const { id } = req.params
   if (body && body.description)
@@ -76,7 +80,7 @@ router.put('/:id', authenticate, async (req, res) => {
       .json({ error: 'Please provide a post description to change' })
 })
 
-router.delete('/:id', authenticate, async (req, res) => {
+router.delete('/:id', authenticate, checkStylist, async (req, res) => {
   const userId = req.decoded.id
   const { id } = req.params
   try {
