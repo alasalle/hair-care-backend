@@ -11,13 +11,13 @@
 
 These are the following environment variables you need in your .env file in the base of the repository
 
-DB_ENV=`<development or testing or production>`
-PORT=`<any port of your choosing>`
-DATABASE_URL=`<link to hosted postgres database for example 'postgres://`xxxxxxxxxxxxxx:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@xxx-xxxx-xxx-xxx.compute-1.amazonaws.com:xxxx/xxxxxxxxxxxx'>
-CLIENT_ID=`<client id for google+ api>`
-CLIENT_SECRET=`<client secret for google+ api>`
-COOKIE_KEY=`<session key of your choosing>`
-JWT_SECRET=`<jwt secret of your choosing>`
+- DB_ENV=`<development or testing or production>`
+- PORT=`<any port of your choosing>`
+- DATABASE_URL=`<link to hosted postgres database for example 'postgres://`xxxxxxxxxxxxxx:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@xxx-xxxx-xxx-xxx.compute-1.amazonaws.com:xxxx/xxxxxxxxxxxx'>
+- CLIENT_ID=`<client id for google+ api>`
+- CLIENT_SECRET=`<client secret for google+ api>`
+- COOKIE_KEY=`<session key of your choosing>`
+- JWT_SECRET=`<jwt secret of your choosing>`
 
 ## Models
 
