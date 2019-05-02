@@ -12,6 +12,7 @@ const AuthRouter = require('./data/routes/auth-router')
 const StylistsRouter = require('./data/routes/stylists-router')
 const PostsRouter = require('./data/routes/posts-router')
 const TagsRouter = require('./data/routes/tags-router')
+const LikesRouter = require('./data/routes/likes-router')
 
 const PORT = process.env.PORT || 5000
 
@@ -58,6 +59,7 @@ server.use('/auth', AuthRouter)
 server.use('/api/stylists', StylistsRouter)
 server.use('/api/posts', PostsRouter)
 server.use('/api/tags', TagsRouter)
+server.use('/api/likes', LikesRouter)
 
 server.get('/', (req, res) => res.status(200).json({ api: 'up' }))
 
