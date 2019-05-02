@@ -16,7 +16,6 @@ router.get('/:id', async (req, res) => {
   const { id } = req.params
   try {
     const likes = await Likes.getLikesByPost(id)
-    console.log(likes)
     likes && likes.length > 0
       ? res.status(201).json(likes)
       : res
