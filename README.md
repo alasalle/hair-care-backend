@@ -32,9 +32,6 @@ These are the following environment variables you need in your .env file in the 
 - stylist_id:integer
 - rating:integer
 - description:string
-- image_1:string
-- image_2:string
-- image_3:string
 
 ### Posts
 
