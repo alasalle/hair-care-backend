@@ -43,7 +43,7 @@ router.post('/', authenticate, async (req, res) => {
       const id = await Tags.addTag(body, req.decoded.id)
       const newId = parseInt(JSON.stringify(id).match(/[0-9]/g).join``)
       const tag = await Tags.getTagById(newId)
-      res.status(201).json({ tag })
+      res.status(201).json(tag)
     } catch (error) {
       res.status(500).json({ error })
     }

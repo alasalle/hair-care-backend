@@ -47,7 +47,7 @@ router.post('/', authenticate, checkStylist, async (req, res) => {
       const id = await Posts.addPost(body, req.decoded.id)
       const newId = parseInt(JSON.stringify(id).match(/[0-9]/g).join``)
       const post = await Posts.getPostById(newId)
-      res.status(201).json({ post })
+      res.status(201).json(post)
     } catch (error) {
       res.status(500).json({ error })
     }

@@ -32,7 +32,7 @@ router.post('/', authenticate, async (req, res) => {
     try {
       const success = await Likes.addLike(body)
       const likes = await Likes.getLikesByPost(body.post_id)
-      res.status(201).json({ likes })
+      res.status(201).json(likes)
     } catch (error) {
       res.status(500).json({ error })
     }

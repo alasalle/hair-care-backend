@@ -62,7 +62,7 @@ router.post('/', authenticate, async (req, res) => {
           const success = await Ratings.addRating(body)
           const ratings = await Ratings.getRatingsByStylist(body.stylist_id)
           console.log(ratings)
-          res.status(201).json({ ratings })
+          res.status(201).json(ratings)
         } catch (error) {
           res.status(500).json({ error })
         }
