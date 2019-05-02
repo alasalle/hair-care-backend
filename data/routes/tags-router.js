@@ -24,8 +24,8 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-router.get('/tag/:tag', async (req, res) => {
-  const { tag } = req.params
+router.post('/tag', async (req, res) => {
+  const { tag } = req.body
   try {
     const tagRes = await Tags.getTagByTag(tag)
     tagRes
