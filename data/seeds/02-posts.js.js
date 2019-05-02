@@ -14,33 +14,21 @@ exports.seed = function(knex, Promise) {
       },
       {
         image:
-          'https://scontent-dfw5-1.cdninstagram.com/vp/8a25434ef469e272a7684b0e3f3e0b8c/5D5BFC12/t51.2885-15/e35/21227544_1783060938659766_6759646888833581056_n.jpg?_nc_ht=scontent-dfw5-1.cdninstagram.com',
-        description: `green hair; don't care`,
-        stylist_id: 1
-      },
-      {
-        image:
-          'https://scontent-dfw5-1.cdninstagram.com/vp/8a25434ef469e272a7684b0e3f3e0b8c/5D5BFC12/t51.2885-15/e35/21227544_1783060938659766_6759646888833581056_n.jpg?_nc_ht=scontent-dfw5-1.cdninstagram.com',
-        description: `red hair; don't care`,
-        stylist_id: 2
-      },
-      {
-        image:
           'https://images.unsplash.com/photo-1553148441-04cabe5b224b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjY4Nzc5fQ',
         description: 'Lorem Ipsum',
-        stylist_id: Math.trunc(Math.random() * 29 + 1)
+        stylist_id: 1
       },
       {
         image:
           'https://images.unsplash.com/photo-1526493699191-53c58c5b8a0c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjY4Nzc5fQ',
         description: 'Check out our website www.thoughtcatalog.com.',
-        stylist_id: Math.trunc(Math.random() * 29 + 1)
+        stylist_id: 1
       },
       {
         image:
           'https://images.unsplash.com/photo-1555087053-481751a74579?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjY4Nzc5fQ',
         description: 'Lorem Ipsum',
-        stylist_id: Math.trunc(Math.random() * 29 + 1)
+        stylist_id: 1
       },
       {
         image:
