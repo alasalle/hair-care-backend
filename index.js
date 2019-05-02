@@ -15,8 +15,18 @@ const TagsRouter = require('./data/routes/tags-router')
 
 const PORT = process.env.PORT || 5000
 
+const whitelist = [
+  'http://localhost:3000',
+  'https://elastic-jackson-088903.netlify.com/'
+]
 const corsOptions = {
-  origin: 'http://localhost:3000'
+  origin: function(origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
 }
 
 const sessionOptions = {
