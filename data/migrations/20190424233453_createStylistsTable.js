@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
       .string('google_id', 128)
       .notNullable()
       .unique()
-    tbl.string('profile_picture', 128)
+    tbl.string('profile_picture', 512)
     tbl
       .string('stylist_name', 128)
       .notNullable()
