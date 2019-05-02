@@ -162,7 +162,7 @@ exports.seed = function(knex, Promise) {
         image:
           'https://images.unsplash.com/photo-1551861746-0e9443ac39b2?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjY4Nzc5fQ',
         description:
-          'According to a 2018 McKinsey report, China boasts 114 of the world’s 147 female, self-made billionaires (America has 14). And almost 50% more women hold professional or technical jobs for every 100 men in the Philippines. Asia is one of the most progressive regions for women, yet stereotypes of what Asian women are like and look like persist. BBH Singapore’s ‘See Different’ collection of images seeks to change that by showing the true diversity and personality of women across the Asian region. Photo by @jazzquek.',
+          'According to a 2018 McKinsey report, China boasts 114 of the world’s 147 female, self-made billionaires (America has 14). And almost 50% more women hold professional or technical jobs for every 100 men in the Philippines. Asia is one of the most progressive regions for women, yet stereotypes of what Asian women are like and look like persist. BBH Singapore’s ‘See Different’ collection of images seeks to change that by showing the true diversity and personality of women across the Asian region.',
         stylist_id: Math.trunc(Math.random() * 29 + 1)
       },
       {
