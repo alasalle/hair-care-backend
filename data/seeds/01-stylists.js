@@ -1,13 +1,12 @@
-exports.seed = async function(knex, Promise) {
+exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   knex.raw('SET foreign_key_checks = 0')
   knex('stylists').truncate()
   knex.raw('SET foreign_key_checks = 1')
-  await knex('stylists').then(function() {
+  return knex('stylists').then(function() {
     // Inserts seed entries
     return knex('stylists').insert([
       {
-        id: 1,
         google_id: '107419806416882998583',
         profile_picture:
           'https://lh4.googleusercontent.com/-1ySoZYJfqlY/AAAAAAAAAAI/AAAAAAAAN0M/LYiojDv84UA/photo.jpg',
@@ -19,7 +18,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 2,
         google_id: '103157180982144344794',
         profile_picture:
           'https://lh3.googleusercontent.com/-md_I4afizO4/AAAAAAAAAAI/AAAAAAAAAQA/egtlYqloMZE/photo.jpg',
@@ -31,7 +29,6 @@ exports.seed = async function(knex, Promise) {
         stylist: false
       },
       {
-        id: 3,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -47,7 +44,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 4,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -63,7 +59,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 5,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -79,7 +74,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 6,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -95,7 +89,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 7,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -111,7 +104,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 8,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -127,7 +119,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 9,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -143,7 +134,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 10,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -159,7 +149,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 11,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -175,7 +164,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 12,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -191,7 +179,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 13,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -207,7 +194,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 14,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -223,7 +209,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 15,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -239,7 +224,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 16,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -255,7 +239,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 17,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -271,7 +254,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 18,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -287,7 +269,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 19,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -303,7 +284,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 20,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -319,7 +299,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 21,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -335,7 +314,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 22,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -351,7 +329,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 23,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -367,7 +344,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 24,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -383,7 +359,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 25,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -399,7 +374,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 26,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -415,7 +389,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 27,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -431,7 +404,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 28,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -447,7 +419,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 29,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -463,7 +434,6 @@ exports.seed = async function(knex, Promise) {
         stylist: true
       },
       {
-        id: 30,
         google_id: (
           '10' +
           Math.trunc(Math.random() * 100000000000000000) +
@@ -480,5 +450,4 @@ exports.seed = async function(knex, Promise) {
       }
     ])
   })
-  return knex.raw("select setval('id', max(id)) from stylists")
 }
