@@ -3,6 +3,7 @@ const db = require('../../dbConfig')
 module.exports = {
   getPosts,
   getPostById,
+  getPostByStylist,
   getPostsByTag,
   addPost,
   editPost,
@@ -16,6 +17,9 @@ function getPostById(id) {
   return db('posts')
     .where({ id })
     .first()
+}
+function getPostByStylist(stylist_id) {
+  return db('posts').where({ stylist_id })
 }
 function getPostsByTag(tag) {
   return db
