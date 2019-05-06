@@ -21,7 +21,7 @@ router.get(
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
   req.session.user = req.user
   const token = generateToken(req.user)
-  app.get(
+  router.get(
     '/auth/google/callback',
     passport.authenticate('google'),
     (_, res) => {
