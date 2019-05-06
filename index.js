@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 5000
 const whitelist = [
   'http://localhost:3000',
   'https://elastic-jackson-088903.netlify.com',
-  'https://pompadore.style'
+  'http://pompadore.style'
 ]
 const corsOptions = {
   origin: function(origin, callback) {
