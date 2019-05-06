@@ -21,15 +21,15 @@ router.get(
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
   req.session.user = req.user
   const token = generateToken(req.user)
-  router.get(
-    '/auth/google/callback',
-    passport.authenticate('google'),
-    (_, res) => {
-      if (process.env.NODE_ENV === 'production') {
-        res.redirect('https://elastic-jackson-088903.netlify.com')
-      } else res.redirect('http://localhost:3000')
-    }
-  )
+  // router.get(
+  //   '/auth/google/callback',
+  //   passport.authenticate('google'),
+  //   (_, res) => {
+  if (process.env.NODE_ENV === 'production') {
+    res.redirect('https://elastic-jackson-088903.netlify.com')
+  } else res.redirect('http://localhost:3000')
+  // }
+  // )
 })
 
 function generateToken(stylist) {
