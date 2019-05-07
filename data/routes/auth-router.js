@@ -22,8 +22,8 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
   req.session.user = req.user
   const token = generateToken(req.user)
   if (process.env.NODE_ENV === 'production') {
-    res.redirect('https://elastic-jackson-088903.netlify.com/' + token)
-  } else res.redirect('http://localhost:3000/' + token)
+    res.redirect('https://elastic-jackson-088903.netlify.com/#/token?=' + token)
+  } else res.redirect('http://localhost:3000/#/token?=' + token)
 })
 
 function generateToken(stylist) {
